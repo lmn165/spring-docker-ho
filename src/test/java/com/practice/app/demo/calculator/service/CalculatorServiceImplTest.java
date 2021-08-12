@@ -1,21 +1,24 @@
 package com.practice.app.demo.calculator.service;
 
+import com.practice.app.demo.calculator.entity.Calculator;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import static org.mockito.BDDMockito.given;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class CalculatorServiceImplTest {
+    @Mock
+    Calculator calculator;
 
-    @MockBean
-    CalculatorServiceImpl calculatorService;
+    @BeforeEach
+    void setUp(){
+        calculator = new Calculator(2, 4);
+    }
 
     @Test
-    void createRandoms() {
-        given(calculatorService.createRandomNumber()).willReturn(30);
-        assertThat(calculatorService.createRandomNumber()).isEqualTo(30);
+    void test_multi(){
+        System.out.println(">>> " + calculator.toString());
     }
 }
