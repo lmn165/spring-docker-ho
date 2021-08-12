@@ -1,7 +1,7 @@
 package com.practice.app.demo.calculator.controller;
 
-import com.practice.app.demo.calculator.entity.User;
-import com.practice.app.demo.calculator.service.UserServiceImpl;
+import com.practice.app.demo.calculator.entity.Item;
+import com.practice.app.demo.calculator.service.ItemServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,22 +12,22 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController @RequiredArgsConstructor
-@RequestMapping("/users")
-public final class UserController {
-    private final UserServiceImpl userService;
+@RequestMapping("/items")
+public class ItemController {
+    private final ItemServiceImpl itemService;
 
     @GetMapping("/all")
-    public List<User> findAll(){
-        return userService.findAll();
+    public List<Item> findAll(){
+        return itemService.findAll();
     }
+
     @GetMapping("/name/{name}")
-    public List<User> findAllByName(@PathVariable String name){
-        return userService.findAllByName(name);
+    public List<Item> findAllByName(@PathVariable String name){
+        return itemService.findAllByName(name);
     }
 
     @GetMapping("/id/{id}")
-    public Optional<User> findById(@PathVariable long id) {
-        return userService.findById(id);
+    public Optional<Item> some(@PathVariable long id){
+        return itemService.findById(id);
     }
 }
-
